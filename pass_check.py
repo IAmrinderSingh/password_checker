@@ -23,3 +23,13 @@ def pwned_api_check(password):
     first5char,tail=sha1password[:5],sha1password[5:]
     response=request_api_data(first5char) # using first 5 char of hash
     return get_pass_leaks_count(response,tail)
+
+def main(args):
+    for password in args:
+        count=pwned_api_check(password)
+        if count:
+            print(f'{password} was found {count} times... you should change your password!')
+        else:
+            print(f"{password} is secure carry on")    
+
+main(sys.argv[1:]) # pass from cli
