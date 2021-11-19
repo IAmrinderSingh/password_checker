@@ -31,5 +31,9 @@ def main(args):
             print(f'{password} was found {count} times... you should change your password!')
         else:
             print(f"{password} is secure carry on")    
-
-main(sys.argv[1:]) # pass from cli
+try:
+    inputs=input(sys.argv[1:])
+except:
+    print('Enter argument before proceeding')
+    sys.exit(1)
+main(inputs) # pass from cli
